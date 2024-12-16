@@ -4,7 +4,6 @@ from datetime import date, datetime, timedelta
 import os
 import sys
 
-### Program configuration
 
 ## Working directory configuration
 """

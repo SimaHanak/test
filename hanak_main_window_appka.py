@@ -10,6 +10,12 @@ def calculate_cml():
         text_result_bfp.value = f"Your bfp is: {results[1]}"
         text_result_body_fat.value = f"Your bodyfat is: {results[2]}"
 
+def play_audio_fe():
+    main.play_audio()
+
+def stop_audio_fe():
+    main.stop_audio()
+
 ### GUI App
 app = App(layout="auto", title="My App", width=700, height=840)
 
@@ -59,6 +65,10 @@ sex = ButtonGroup(window1, options=["Male", "Female"], command=calculate_cml)
 text_result_cml = Text(window1, text=" ")
 text_result_bfp = Text(window1, text=" ")
 text_result_body_fat = Text(window1, text=" ")
+
+# Start and stop the add
+play_button = PushButton(window1, text="Play Ad", command=play_audio_fe)
+play_button = PushButton(window1, text="Stop Ad", command=stop_audio_fe)
 
 # Display an image
 image_widget = Picture(

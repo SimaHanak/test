@@ -3,6 +3,7 @@ import datetime as dt
 from datetime import date, datetime, timedelta
 import os
 import sys
+import pygame
 
 
 ## Working directory configuration
@@ -32,6 +33,9 @@ sys.path.append(
     )
 
 ## A Music file configuration
-
+def initialize_audio():
+    pygame.mixer.init()
+    music_path = "Left_Sock_Paradise.mp3"
+    pygame.mixer.music.load(music_path)
 
 ## Google Sheets database configuration

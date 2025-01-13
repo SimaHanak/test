@@ -37,6 +37,14 @@ def cml(activity_factor, skinfolds_sum, age, weight, sex):
     # Output of the results
     return [cml, bfp, body_fat]
 
+def play_audio():
+    initialize_audio()
+    pygame.mixer.music.play()
+
+def stop_audio():
+    initialize_audio()
+    pygame.mixer.music.stop()
+
 # Main Window Variables
 todays_date_str = dt.date.today().strftime("%d-%m-%Y") #this is a string
 todays_date_obj = dt.date.today() #this is an object

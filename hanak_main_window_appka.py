@@ -4,14 +4,14 @@ import hanak_main_appka as main
 
 ### GUI functions
 def calculate_cml():
-    results = main.cml(txtbox_af, txtbox_skinfolds_sum, txtbox_age, txtbox_weight, sex)
+    results = main.cml(txtbox_af, txtbox_skinfolds_sum, txtbox_age, slider_weight, sex)
     if results:
         text_result_cml.value = f"Your cml is: {results[0]}"
         text_result_bfp.value = f"Your bfp is: {results[1]}"
         text_result_body_fat.value = f"Your bodyfat is: {results[2]}"
 
 ### GUI App
-app = App(title="My App", width=700, height=840)
+app = App(layout="auto", title="My App", width=700, height=840)
 
 ## Window 1
 window1 = Box(app, visible=True)
@@ -31,7 +31,8 @@ text_weight = Text(
     window1,
     text="Please enter your weight in kilograms (kg):"
 )
-txtbox_weight = TextBox(window1, command=calculate_cml)
+#txtbox_weight = TextBox(window1, command=calculate_cml)
+slider_weight = Slider(window1, start=0, end=200, command=calculate_cml)
 
 # Input age
 text_age = Text(
@@ -52,16 +53,12 @@ text_sex = Text(
     window1,
     text="Please enter your sex:"
 )
-sex = Combo(window1, options=["Male", "Female"], command=calculate_cml)
+sex = ButtonGroup(window1, options=["Male", "Female"], command=calculate_cml)
 
+#O utput of the calculation
 text_result_cml = Text(window1, text=" ")
 text_result_bfp = Text(window1, text=" ")
 text_result_body_fat = Text(window1, text=" ")
-
-# Output results of calculations
-
-
-
 
 # Display an image
 image_widget = Picture(

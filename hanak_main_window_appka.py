@@ -66,7 +66,7 @@ text_result_body_fat = Text(window1, text=" ")
 # Display an image
 image_widget = Picture(
     window1,
-    image="resources/images/calculating_cml.png",
+    image="calculating_cml.png",
     width=680,
     height=480,
     align="bottom"

@@ -11,16 +11,24 @@ def calculate_cml():
         text_result_body_fat.value = f"Your bodyfat is: {results[2]}"
 
 def play_audio_fe():
-    main.play_audio()
+    sock_image.show()
+    try:
+        main.play_audio()
+    except:
+        pass
 
 def stop_audio_fe():
-    main.stop_audio()
+    sock_image.hide()
+    try:
+        main.stop_audio()
+    except:
+        pass
 
 ### GUI App
-app = App(layout="auto", title="My App", width=700, height=840)
+app = App(layout="auto", title="My App", width=1080, height=720)
 
 ## Window 1
-window1 = Box(app, visible=True)
+window1 = Box(app, visible=True, align="left", layout="auto")
 
 # Welcome text
 text_welcome = Text(window1, text=(f"Hi, user!"))
@@ -70,13 +78,25 @@ text_result_body_fat = Text(window1, text=" ")
 play_button = PushButton(window1, text="Play Ad", command=play_audio_fe)
 play_button = PushButton(window1, text="Stop Ad", command=stop_audio_fe)
 
+# Image box
+image_box = Box(app, layout="auto", align="right")
+
 # Display an image
-image_widget = Picture(
-    window1,
+cml_widget = Picture(
+    image_box,
     image="calculating_cml.png",
-    width=680,
-    height=480,
-    align="bottom"
+    width=510,
+    height=360,
+    align="top"
+)
+
+sock_image = Picture(
+    image_box,
+    image="left_sock_paradise.png",
+    width=510,
+    height=360,
+    align="bottom",
+    visible=False
 )
 
 app.display()

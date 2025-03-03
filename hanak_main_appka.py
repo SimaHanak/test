@@ -1,7 +1,31 @@
 # Importing all app imports
 from hanak_config_appka import *
 
-# Main Window Functions
+
+#Storing Today's Date & Time
+todays_date_str = dt.date.today().strftime("%d-%m-%Y") #this is a string
+todays_date_obj = dt.date.today() #this is an object
+
+todays_data_list = []
+fat_data = {}
+
+def calculate_todays_data():
+    weight = fat_data['weight']
+    skinfolds_sum = fat_data['skinfolds_sum']
+    fat_data['cal_main_lvl'] = round(float(fat_data['bmr'] * 1.2), 2)
+    todays_data_list.clear()
+    todays_data_list.append(todays_date_str)
+    todays_data_list.append(str(weight))
+    todays_data_list.append(str(skinfolds_sum))
+    todays_data_list.append(str(fat_data['bmr']))
+    todays_data_list.append(str(fat_data['cal_main_lvl']))
+
+def create_todays_user_db_record():
+    calculate_todays_data()
+    worksheet = gc.open(sheet_name)
+    spreadsheet = worksheet.sheet1
+    # Store in the Google Sheet
+    spreadsheet.append_row(todays_data_list)
 
 def get_values(*args):
     # Get all values from the widgets
@@ -33,6 +57,10 @@ def cml(activity_factor, skinfolds_sum, age, weight, sex):
     bmr = weight * 24.2
     cml = bmr * activity_factor
     cml = round(cml, 2)
+
+    fat_data["weight"] = weight
+    fat_data["skinfolds_sum"] = skinfolds_sum
+    fat_data["bmr"] = bmr
     
     # Output of the results
     return [cml, bfp, body_fat]

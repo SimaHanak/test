@@ -45,7 +45,7 @@ def initialize_audio():
 
 ## Google Sheets database configuration
 # Path to the service account key JSON file (update this path)
-SERVICE_ACCOUNT_FILE = "databaseinf-d7ee9d31da7b.json"
+SERVICE_ACCOUNT_FILE = "databaseinf-d015469804dd.json"
 # Define scopes for Google APIs
 SCOPES = ["https://www.googleapis.com/auth/drive", "https://www.googleapis.com/auth/spreadsheets"]
 # Authenticate using the service account
@@ -53,3 +53,7 @@ creds = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPE
 # Google Drive and Sheets API clients
 drive_service = build("drive", "v3", credentials=creds)
 gc = gspread.authorize(creds)
+
+# Update with your folder ID and sheet name
+folder_id = '1m8CLTK42OrtG6sl1-bz01HsRBQMTtDCW'
+sheet_name = 'Database'

@@ -24,6 +24,9 @@ def stop_audio_fe():
     except:
         pass
 
+def write_to_spreadsheet():
+    main.create_todays_user_db_record()
+
 ### GUI App
 app = App(layout="auto", title="My App", width=1080, height=720)
 
@@ -73,6 +76,9 @@ sex = ButtonGroup(window1, options=["Male", "Female"], command=calculate_cml)
 text_result_cml = Text(window1, text=" ")
 text_result_bfp = Text(window1, text=" ")
 text_result_body_fat = Text(window1, text=" ")
+
+# Write data to gspread
+write_data = PushButton(window1, text="Write Data", command=write_to_spreadsheet)
 
 # Start and stop the add
 play_button = PushButton(window1, text="Play Ad", command=play_audio_fe)
